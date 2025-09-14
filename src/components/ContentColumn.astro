@@ -1,0 +1,13 @@
+---
+export interface Props {
+	position: 1 | 2;
+}
+
+const { position } = Astro.props;
+---
+
+<div class={`content-column content-column-${position}`}>
+	<div class="markdown-content">
+		<slot />
+	</div>
+</div>

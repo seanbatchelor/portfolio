@@ -1,0 +1,57 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import ProjectSection from '../../components/ProjectSection.astro';
+import ContentColumn from '../../components/ContentColumn.astro';
+---
+
+<ProjectLayout 
+	title="Cecil.earth"
+	headline="Cecil's mission is to unlock data driven environmental markets"
+	intro="Cecil is a seed stage startup, founded after the Black Summer bushfires by a team motivated to be part of the climate solution. I joined as Head of Design to lead product experience and brand as the business sought product-market fit."
+>
+	<ProjectSection 
+		images={[
+			{ src: "https://placehold.co/1200x600", alt: "Brand identity overview showing logo variations" },
+			{ src: "https://placehold.co/1200x600", alt: "Logo variations in different contexts" },
+			{ src: "https://placehold.co/1200x600", alt: "Brand guidelines documentation" }
+		]}
+		subheading="The Challenge"
+	>
+		<ContentColumn position={1}>
+			The startup needed a brand identity that would communicate their commitment to sustainability while appealing to enterprise clients in the tech sector.
+
+			Key requirements included creating a scalable logo system, establishing color guidelines that worked across digital and print, and developing a visual language that felt both professional and environmentally conscious.
+		</ContentColumn>
+		
+		<ContentColumn position={2}>
+			I focused on creating a modular identity system built around natural forms and clean typography. The logo incorporates subtle organic elements while maintaining the geometric precision expected in tech branding.
+
+			- Logo variations for different use cases
+			- Sustainable color palette with accessibility compliance  
+			- Typography system with web and print considerations
+		</ContentColumn>
+	</ProjectSection>
+
+	<ProjectSection imageAlt="Color palette and typography samples" subheading="Design System">
+		<ContentColumn position={1}>
+			Developed an earth-inspired palette that maintains high contrast ratios for accessibility while reflecting the company's environmental values. Selected a modern sans-serif family that balances readability with personality.
+		</ContentColumn>
+	</ProjectSection>
+
+	<ProjectSection imageAlt="Brand applications across various materials" subheading="Implementation">
+		<ContentColumn position={1}>
+			The brand system was successfully implemented across all company touchpoints, from business cards and letterhead to the company website and mobile app.
+
+			Created detailed brand guidelines document with usage examples, ensuring consistent application by internal teams and external partners.
+		</ContentColumn>
+		
+		<ContentColumn position={2}>
+			The new brand identity helped the company secure Series A funding and establish credibility with enterprise clients.
+
+			- 40% increase in website engagement
+			- Successful Series A funding round  
+			- Consistent brand recognition across all channels
+			- Positive feedback from stakeholders and customers
+		</ContentColumn>
+	</ProjectSection>
+</ProjectLayout>

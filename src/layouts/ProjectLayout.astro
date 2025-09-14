@@ -1,0 +1,44 @@
+---
+export interface Props {
+	title: string;
+	headline: string;
+	intro: string;
+}
+
+const { title, headline, intro } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title} | Sean Batchelor</title>
+		<link rel="stylesheet" href="/src/styles/project.css" />
+	</head>
+	<body>
+		<div class="project-container">
+			<!-- Navigation -->
+			<nav class="project-nav">
+				<div class="nav-container">
+					<a href="/" class="nav-home">← Back to Home</a>
+					<div class="nav-links">
+						<a href="/portfolio/cecil-earth" class="nav-link">Cecil.earth</a>
+					</div>
+				</div>
+			</nav>
+
+			<!-- Header Section -->
+			<header class="project-header">
+				<h1 class="project-title">{title}</h1>
+				<h2 class="project-headline">{headline}</h2>
+				<p class="project-intro">{intro}</p>
+			</header>
+
+			<!-- Main Content Area -->
+			<main class="project-main">
+				<slot />
+			</main>
+		</div>
+	</body>
+</html>

@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.7"
+    "astro": "^5.13.7",
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-autoplay": "^8.6.0"
   }
 }

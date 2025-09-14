@@ -1,0 +1,74 @@
+---
+export interface Props {
+	images: Array<{
+		src: string;
+		alt: string;
+	}>;
+	id: string;
+}
+
+const { images, id } = Astro.props;
+---
+
+<div class="embla" data-carousel-id={id}>
+	<div class="embla__viewport">
+		<div class="embla__container">
+			{images.map((image) => (
+				<div class="embla__slide">
+					<img src={image.src} alt={image.alt} class="project-image" />
+				</div>
+			))}
+		</div>
+	</div>
+	
+	<div class="embla__dots">
+		{images.map((_, index) => (
+			<button 
+				type="button" 
+				class="embla__dot" 
+				data-index={index}
+				aria-label={`Go to slide ${index + 1}`}
+			></button>
+		))}
+	</div>
+</div>
+
+<script>
+	import EmblaCarousel from 'embla-carousel';
+	
+	// Initialize all carousels on the page
+	document.addEventListener('DOMContentLoaded', () => {
+		const carousels = document.querySelectorAll('.embla');
+		
+		carousels.forEach((carousel) => {
+			const viewport = carousel.querySelector('.embla__viewport');
+			const dots = carousel.querySelectorAll('.embla__dot');
+			
+			if (!viewport) return;
+			
+			const embla = EmblaCarousel(viewport, {
+				loop: true,
+				align: 'center'
+			});
+			
+			// Update dot states
+			const updateDots = () => {
+				const selectedIndex = embla.selectedScrollSnap();
+				dots.forEach((dot, index) => {
+					dot.classList.toggle('embla__dot--selected', index === selectedIndex);
+				});
+			};
+			
+			// Initialize dots
+			updateDots();
+			embla.on('select', updateDots);
+			
+			// Add click handlers to dots
+			dots.forEach((dot, index) => {
+				dot.addEventListener('click', () => {
+					embla.scrollTo(index);
+				});
+			});
+		});
+	});
+</script>

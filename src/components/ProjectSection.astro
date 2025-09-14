@@ -1,0 +1,49 @@
+---
+import ImageCarousel from './ImageCarousel.astro';
+
+export interface Props {
+	image?: string;
+	imageAlt?: string;
+	images?: Array<{
+		src: string;
+		alt: string;
+	}>;
+	subheading: string;
+}
+
+const { image, imageAlt, images, subheading } = Astro.props;
+const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<section class="project-section">
+	{images && images.length > 1 && (
+		<div class="project-image-container">
+			<ImageCarousel images={images} id={carouselId} />
+		</div>
+	)}
+	
+	{images && images.length === 1 && (
+		<div class="project-image-container">
+			<img src={images[0].src} alt={images[0].alt} class="project-image" />
+		</div>
+	)}
+	
+	{image && !images && (
+		<div class="project-image-container">
+			<img src={image} alt={imageAlt} class="project-image" />
+		</div>
+	)}
+	
+	{!image && !images && (
+		<div class="project-image-container">
+			<div class="project-image-placeholder">{imageAlt || 'Image placeholder'}</div>
+		</div>
+	)}
+	
+	<div class="project-content">
+		<div class="content-column subheading-column">
+			<h3>{subheading}</h3>
+		</div>
+		<slot />
+	</div>
+</section>
