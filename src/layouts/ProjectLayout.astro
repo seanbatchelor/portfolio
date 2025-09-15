@@ -30,9 +30,11 @@ const { title, headline, intro } = Astro.props;
 
 			<!-- Header Section -->
 			<header class="project-header">
-				<h1 class="project-title">{title}</h1>
-				<h2 class="project-headline">{headline}</h2>
-				<p class="project-intro">{intro}</p>
+				<div class="header-content">
+					<h1 class="project-title">{title}</h1>
+					<h2 class="project-headline">{headline}</h2>
+					<p class="project-intro" set:html={intro}></p>
+				</div>
 			</header>
 
 			<!-- Main Content Area -->

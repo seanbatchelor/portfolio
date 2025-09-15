@@ -4,21 +4,16 @@ const ctx = canvas.getContext('2d');
 
 // Color state management
 let currentColorIndex = 0;
+let targetColorIndex = 0;
+let colorTransition = 0; // 0 to 1, for smooth transitions
 let hoverState = { black: false, white: false };
 const colorPairs = [
-	{ color1: 'hsl(0, 55%, 63%)', color2: 'hsl(195, 65%, 63%)' },     // Red vs Blue (current)
-	{ color1: 'hsl(30, 70%, 63%)', color2: 'hsl(210, 70%, 63%)' },    // Orange vs Blue
-	{ color1: 'hsl(120, 55%, 63%)', color2: 'hsl(300, 55%, 63%)' },   // Green vs Magenta
-	{ color1: 'hsl(60, 70%, 63%)', color2: 'hsl(240, 70%, 63%)' },    // Yellow vs Blue-Purple
-	{ color1: 'hsl(270, 55%, 63%)', color2: 'hsl(90, 55%, 63%)' },    // Purple vs Yellow-Green
-	{ color1: 'hsl(15, 60%, 63%)', color2: 'hsl(195, 60%, 63%)' },    // Red-Orange vs Cyan
-	{ color1: 'hsl(45, 65%, 63%)', color2: 'hsl(225, 65%, 63%)' },    // Gold vs Blue-Violet
-	{ color1: 'hsl(75, 58%, 63%)', color2: 'hsl(255, 58%, 63%)' },    // Lime vs Indigo
-	{ color1: 'hsl(105, 55%, 63%)', color2: 'hsl(285, 55%, 63%)' },   // Spring Green vs Violet
-	{ color1: 'hsl(135, 60%, 63%)', color2: 'hsl(315, 60%, 63%)' },   // Emerald vs Fuchsia
-	{ color1: 'hsl(165, 65%, 63%)', color2: 'hsl(345, 65%, 63%)' },   // Turquoise vs Rose
-	{ color1: 'hsl(180, 68%, 63%)', color2: 'hsl(0, 68%, 63%)' },     // Aqua vs Pure Red
-	{ color1: 'hsl(330, 58%, 63%)', color2: 'hsl(150, 58%, 63%)' },   // Pink vs Sea Green
+	{ color1: 'hsl(13, 91%, 59%)', color2: 'hsl(187, 100%, 60%)' },     // Red vs Blue
+	{ color1: 'hsl(280, 100%, 65%)', color2: 'hsl(65, 100%, 55%)' },    // Purple vs Lime
+	{ color1: 'hsl(340, 100%, 60%)', color2: 'hsl(160, 100%, 50%)' },   // Magenta vs Teal
+	{ color1: 'hsl(25, 100%, 60%)', color2: 'hsl(205, 100%, 65%)' },    // Orange vs Sky Blue
+	{ color1: 'hsl(300, 90%, 65%)', color2: 'hsl(120, 90%, 50%)' },     // Hot Pink vs Green
+	{ color1: 'hsl(240, 100%, 70%)', color2: 'hsl(60, 100%, 60%)' },    // Electric Blue vs Yellow
 ];
 
 // Function to resize canvas and redraw
@@ -37,25 +32,25 @@ function isPointInTriangle(px, py, x1, y1, x2, y2, x3, y3) {
 	return a >= 0 && b >= 0 && c >= 0;
 }
 
-// Handle canvas clicks
-function handleCanvasClick(event) {
+// Get scaled canvas coordinates from mouse event
+function getCanvasCoordinates(event) {
 	const rect = canvas.getBoundingClientRect();
-	const x = event.clientX - rect.left;
-	const y = event.clientY - rect.top;
-	
-	// Scale coordinates to canvas size
 	const scaleX = canvas.width / rect.width;
 	const scaleY = canvas.height / rect.height;
-	const canvasX = x * scaleX;
-	const canvasY = y * scaleY;
-	
+	return {
+		x: (event.clientX - rect.left) * scaleX,
+		y: (event.clientY - rect.top) * scaleY
+	};
+}
+
+// Check if coordinates are in either triangle
+function checkTriangleHit(canvasX, canvasY) {
 	const width = canvas.width;
 	const height = canvas.height;
 	const centerX = width / 2;
 	const centerY = height / 2;
 	const overlayWidth = width * 0.15;
 	
-	// Check if click is in black triangle (top)
 	const inBlackTriangle = isPointInTriangle(
 		canvasX, canvasY,
 		centerX, centerY,
@@ -63,7 +58,6 @@ function handleCanvasClick(event) {
 		centerX + overlayWidth, 0
 	);
 	
-	// Check if click is in white triangle (bottom)
 	const inWhiteTriangle = isPointInTriangle(
 		canvasX, canvasY,
 		centerX, centerY,
@@ -71,56 +65,55 @@ function handleCanvasClick(event) {
 		centerX + overlayWidth, height
 	);
 	
-	// If clicked on either triangle, cycle colors
+	return { inBlackTriangle, inWhiteTriangle };
+}
+
+// Handle canvas clicks
+function handleCanvasClick(event) {
+	const { x: canvasX, y: canvasY } = getCanvasCoordinates(event);
+	const { inBlackTriangle, inWhiteTriangle } = checkTriangleHit(canvasX, canvasY);
+	
 	if (inBlackTriangle || inWhiteTriangle) {
-		currentColorIndex = (currentColorIndex + 1) % colorPairs.length;
-		drawGeometricDesign();
+		targetColorIndex = (currentColorIndex + 1) % colorPairs.length;
+		colorTransition = 0;
+		animateColorTransition();
 	}
 }
 
 // Handle mouse movement for hover detection
 function handleMouseMove(event) {
-	const rect = canvas.getBoundingClientRect();
-	const x = event.clientX - rect.left;
-	const y = event.clientY - rect.top;
-	
-	// Scale coordinates to canvas size
-	const scaleX = canvas.width / rect.width;
-	const scaleY = canvas.height / rect.height;
-	const canvasX = x * scaleX;
-	const canvasY = y * scaleY;
-	
-	const width = canvas.width;
-	const height = canvas.height;
-	const centerX = width / 2;
-	const centerY = height / 2;
-	const overlayWidth = width * 0.15;
-	
-	// Check if hovering over black triangle (top)
-	const inBlackTriangle = isPointInTriangle(
-		canvasX, canvasY,
-		centerX, centerY,
-		centerX - overlayWidth, 0,
-		centerX + overlayWidth, 0
-	);
-	
-	// Check if hovering over white triangle (bottom)
-	const inWhiteTriangle = isPointInTriangle(
-		canvasX, canvasY,
-		centerX, centerY,
-		centerX - overlayWidth, height,
-		centerX + overlayWidth, height
-	);
+	const { x: canvasX, y: canvasY } = getCanvasCoordinates(event);
+	const { inBlackTriangle, inWhiteTriangle } = checkTriangleHit(canvasX, canvasY);
 	
 	const prevHoverState = { ...hoverState };
 	hoverState.black = inBlackTriangle;
 	hoverState.white = inWhiteTriangle;
 	
-	// Redraw if hover state changed
 	if (prevHoverState.black !== hoverState.black || prevHoverState.white !== hoverState.white) {
 		drawGeometricDesign();
 	}
 }
+
+// Color transition animation function
+function animateColorTransition() {
+	function animate() {
+		colorTransition += 0.04;
+		
+		if (colorTransition >= 1) {
+			colorTransition = 1;
+			currentColorIndex = targetColorIndex;
+		}
+		
+		drawGeometricDesign();
+		
+		if (colorTransition < 1) {
+			requestAnimationFrame(animate);
+		}
+	}
+	
+	animate();
+}
+
 
 // Add event listeners
 canvas.addEventListener('click', handleCanvasClick);
@@ -132,9 +125,11 @@ function drawGeometricDesign() {
 	const height = canvas.height;
 	const centerX = width / 2;
 	const centerY = height / 2;
-	const baseOverlayWidth = width * 0.15; // 15% each side = 30% total width
-	const blackOverlayWidth = hoverState.black ? baseOverlayWidth * 1.05 : baseOverlayWidth;
-	const whiteOverlayWidth = hoverState.white ? baseOverlayWidth * 1.05 : baseOverlayWidth;
+	const overlayWidth = width * 0.15; // 15% each side = 30% total width
+	
+	// Calculate transparency based on hover state
+	const blackOpacity = hoverState.black ? 0.8 : 1.0; // Semi-transparent on hover
+	const whiteOpacity = hoverState.white ? 0.8 : 1.0; // Semi-transparent on hover
 	
 	// Clear canvas
 	ctx.clearRect(0, 0, width, height);
@@ -151,40 +146,47 @@ function drawGeometricDesign() {
 		ctx.fill();
 	}
 	
-	// Get current colors from the color pair
+	// Define triangle shapes
+	const leftTriangle = [[centerX, centerY], [0, height], [0, 0], [centerX, centerY], [width, height], [0, height]];
+	const rightTriangle = [[centerX, centerY], [0, 0], [width, 0], [width, height]];
+	
+	// Get current and target colors for crossfading
 	const currentColors = colorPairs[currentColorIndex];
+	const targetColors = colorPairs[targetColorIndex];
 	
-	// Red triangle (combined left and bottom areas)
-	drawTriangle(currentColors.color1, [
-		[centerX, centerY],     // Center point
-		[0, height],            // Bottom-left corner
-		[0, 0],                 // Top-left corner
-		[centerX, centerY],     // Back to center
-		[width, height],        // Bottom-right corner
-		[0, height]             // Bottom-left corner
-	]);
+	// Draw base layer (current colors)
+	drawTriangle(currentColors.color1, leftTriangle);
+	drawTriangle(currentColors.color2, rightTriangle);
 	
-	// Blue triangle (top and right area)
-	drawTriangle(currentColors.color2, [
-		[centerX, centerY],     // Center point
-		[0, 0],                 // Top-left corner
-		[width, 0],             // Top-right corner
-		[width, height]         // Bottom-right corner
-	]);
+	// Crossfade with target colors during transition
+	if (colorTransition > 0 && colorTransition < 1) {
+		const easeT = colorTransition * colorTransition * (3 - 2 * colorTransition);
+		ctx.globalAlpha = easeT;
+		
+		drawTriangle(targetColors.color1, leftTriangle);
+		drawTriangle(targetColors.color2, rightTriangle);
+		
+		ctx.globalAlpha = 1.0;
+	}
 	
-	// Black triangle overlay (top center)
+	// Black triangle overlay (top center) with opacity
+	ctx.globalAlpha = blackOpacity;
 	drawTriangle('#000000', [
-		[centerX, centerY],                    // Center point
-		[centerX - blackOverlayWidth, 0],     // Left point
-		[centerX + blackOverlayWidth, 0]      // Right point
+		[centerX, centerY],                // Center point
+		[centerX - overlayWidth, 0],      // Left point
+		[centerX + overlayWidth, 0]       // Right point
 	]);
 	
-	// White triangle overlay (bottom center)
+	// White triangle overlay (bottom center) with opacity
+	ctx.globalAlpha = whiteOpacity;
 	drawTriangle('#FFFFFF', [
-		[centerX, centerY],                       // Center point
-		[centerX - whiteOverlayWidth, height],   // Left point
-		[centerX + whiteOverlayWidth, height]    // Right point
+		[centerX, centerY],                   // Center point
+		[centerX - overlayWidth, height],    // Left point
+		[centerX + overlayWidth, height]     // Right point
 	]);
+	
+	// Reset global alpha
+	ctx.globalAlpha = 1.0;
 }
 
 // Initial setup

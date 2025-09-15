@@ -1,0 +1,153 @@
+/* Typography System - Work Sans with Two Font Sizes */
+
+/* Import Work Sans font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap');
+
+/* Base Typography Reset and Setup */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body, html {
+	font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	color: #222222;
+	text-align: left;
+	line-height: 1.6;
+}
+
+/* Typography Scale - Two Sizes Only */
+
+/* Headlines - Large size for main headings */
+h1, h2, .headline {
+	font-size: clamp(1.75rem, 4vw, 2.5rem); /* Responsive: 28px to 40px */
+	font-weight: 700;
+	color: #222222;
+	text-align: left;
+	line-height: 1.2;
+	margin-bottom: 1rem;
+}
+
+/* Body Copy and Subheadings - Standard size */
+h3, h4, h5, h6, p, li, a, .body-text, .subheading {
+	font-size: clamp(1rem, 2.5vw, 1.125rem) !important; /* Responsive: 16px to 18px */
+	font-weight: 400;
+	color: #222222;
+	text-align: left;
+	line-height: 1.6;
+	margin-bottom: 0.75rem;
+	font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* Specific targeting for content columns and markdown content */
+.content-column p, 
+.content-column li, 
+.markdown-content p, 
+.markdown-content li,
+.markdown-content {
+	font-size: clamp(1rem, 2.5vw, 1.125rem) !important;
+	font-weight: 400 !important;
+	color: #222222 !important;
+	text-align: left;
+	line-height: 1.6;
+	font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* Project page h1 exception - use smaller size */
+.project-title {
+	font-size: clamp(1rem, 2.5vw, 1.125rem) !important;
+	font-weight: 600 !important;
+	line-height: 1.6 !important;
+}
+
+/* Bold variant for subheadings */
+h3, h4, h5, h6, .subheading, strong, b {
+	font-weight: 600;
+}
+
+/* Ensure all text elements follow the system */
+nav, nav a, button, input, textarea, select, label {
+	font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	color: #222222;
+	text-align: left;
+}
+
+/* Navigation specific styling */
+nav a {
+	font-size: clamp(1rem, 2.5vw, 1.125rem);
+	font-weight: 400;
+	text-decoration: none;
+	color: #222222;
+}
+
+nav a:hover {
+	opacity: 0.7;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 1.25rem;
+	margin-bottom: 0.75rem;
+}
+
+li {
+	margin-bottom: 0.5rem;
+}
+
+/* Links */
+a {
+	color: #222222;
+	text-decoration: underline;
+}
+
+a:hover {
+	opacity: 0.7;
+}
+
+/* Utility classes for explicit control */
+.text-headline {
+	font-size: clamp(1.75rem, 4vw, 2.5rem);
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.text-body {
+	font-size: clamp(1rem, 2.5vw, 1.125rem);
+	font-weight: 400;
+	line-height: 1.6;
+}
+
+.text-body-bold {
+	font-size: clamp(1rem, 2.5vw, 1.125rem);
+	font-weight: 600;
+	line-height: 1.6;
+}
+
+/* Ensure consistent spacing */
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+}
+
+p:last-child, 
+li:last-child {
+	margin-bottom: 0;
+}
+
+/* Mobile-first responsive adjustments */
+@media (max-width: 768px) {
+	/* Font sizes are already responsive with clamp() */
+	/* Just ensure proper spacing on mobile */
+	body {
+		line-height: 1.5;
+	}
+	
+	h1, h2, .headline {
+		line-height: 1.1;
+		margin-bottom: 0.75rem;
+	}
+	
+	ul, ol {
+		padding-left: 1rem;
+	}
+}
