@@ -1,0 +1,40 @@
+---
+// Navigation component with three main sections
+const { currentPath } = Astro.props;
+
+// Helper function to determine if a path is active
+function isActive(path: string, current: string) {
+  if (path === '/' && current === '/') return true;
+  if (path !== '/' && current.startsWith(path)) return true;
+  return false;
+}
+---
+
+<nav class="global-nav">
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a 
+        href="/" 
+        class={`nav-link ${isActive('/', currentPath) ? 'active' : ''}`}
+      >
+        Sean Batchelor
+      </a>
+    </li>
+    <li class="nav-item">
+      <a 
+        href="/portfolio/cecil-earth" 
+        class={`nav-link ${isActive('/portfolio/cecil-earth', currentPath) ? 'active' : ''}`}
+      >
+        Work
+      </a>
+    </li>
+    <li class="nav-item">
+      <a 
+        href="/say-hi" 
+        class={`nav-link ${isActive('/say-hi', currentPath) ? 'active' : ''}`}
+      >
+        Say hi
+      </a>
+    </li>
+  </ul>
+</nav>

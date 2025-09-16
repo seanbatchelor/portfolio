@@ -1,0 +1,71 @@
+/* Global Styles - Canvas and Navigation */
+
+/* Base reset and canvas styles (from flag.css) */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+}
+
+#canvas {
+	display: block;
+	width: 100vw;
+	height: calc(100vh - 3.6rem); /* Approximate nav height: 1rem padding top + 1rem padding bottom + ~2rem for text and border */
+}
+
+/* Global Navigation Styles */
+.global-nav {
+	width: 100%;
+	padding: .8rem 0;
+	border-bottom: 1px solid #eee;
+	position: relative;
+	z-index: 10;
+	background: white;
+}
+
+.nav-list {
+	display: flex;
+	align-items: center;
+    height: 2em;
+	gap: 1.5rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.nav-item {
+	margin: 0;
+}
+
+.nav-link {
+	/* Use the 'small' typography from your system */
+	font-size: clamp(1rem, 2.5vw, 1.125rem);
+	font-weight: 400;
+	color: #222222;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+	color: hsl(13, 91%, 59%);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+	.global-nav {
+		padding: 1rem 0;
+	}
+	
+	.nav-list {
+		gap: 1.5rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}

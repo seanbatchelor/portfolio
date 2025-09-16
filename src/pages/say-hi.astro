@@ -10,14 +10,28 @@ import Navigation from '../components/Navigation.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Sean Batchelor</title>
+		<title>Say Hi | Sean Batchelor</title>
 	</head>
-	<body style="overflow: hidden;">
+	<body>
 		<Navigation currentPath={Astro.url.pathname} />
-		<canvas id="canvas"></canvas>
+		
+		<main class="contact-page">
+			<div class="content-container">
+				<h1 class="text-headline">Say Hi</h1>
+				<p class="text-body">Get in touch - contact information coming soon...</p>
+			</div>
+		</main>
 	</body>
-	
-	<script>
-		import '../scripts/canvas-animation.js';
-	</script>
 </html>
+
+<style>
+	.contact-page {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem 1rem;
+	}
+
+	.content-container {
+		max-width: 800px;
+	}
+</style>
