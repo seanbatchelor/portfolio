@@ -34,10 +34,10 @@ const { images, id } = Astro.props;
 </div>
 
 <script>
-	import EmblaCarousel from 'embla-carousel';
-	
 	// Initialize all carousels on the page
-	document.addEventListener('DOMContentLoaded', () => {
+	document.addEventListener('DOMContentLoaded', async () => {
+		// Dynamic import for production compatibility
+		const EmblaCarousel = (await import('embla-carousel')).default;
 		const carousels = document.querySelectorAll('.embla');
 		
 		carousels.forEach((carousel) => {
