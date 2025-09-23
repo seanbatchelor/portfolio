@@ -4,40 +4,11 @@
 /* Project Container */
 .project-container {
 	max-width: 2200px;
-	margin: 0 auto;
+	margin: 40px auto;
 	padding: 0 20px;
 }
 
-/* Navigation */
-.project-nav {
-	padding: 20px 0;
-	border-bottom: 1px solid #eee;
-	margin-bottom: 40px;
-}
-
-.nav-container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 20px;
-}
-
-.nav-home {
-	text-decoration: none;
-	font-weight: 500;
-}
-
-.nav-links {
-	display: flex;
-	gap: 30px;
-	flex-wrap: wrap;
-}
-
-.nav-link {
-	text-decoration: none;
-	font-weight: 400;
-}
+/* Navigation — removed legacy rules; nav is fully styled in global.css */
 
 /* Header Section */
 .project-header {
@@ -229,18 +200,9 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-	.project-container {
-		padding: 0 15px;
-	}
-	
-	.nav-container {
-		flex-direction: column;
-		align-items: flex-start;
-	}
-	
-	.nav-links {
-		gap: 20px;
-	}
+    .project-container {
+        padding: 0 15px;
+    }
 	
 	.project-header {
 		grid-template-columns: 1fr;

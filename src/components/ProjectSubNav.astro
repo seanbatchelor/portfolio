@@ -1,0 +1,33 @@
+---
+// Numbered sub-navigation for projects
+const { currentPath } = Astro.props;
+
+const projects = [
+  { n: 1, title: 'Cecil.earth', path: '/portfolio/cecil-earth' },
+  { n: 2, title: 'Hatch', path: '/portfolio/hatch' },
+  { n: 3, title: 'FreshBooks', path: '/portfolio/freshbooks' },
+  { n: 4, title: 'Innovation', path: '/portfolio/innovation' },
+  { n: 5, title: 'Later', path: '/portfolio/later' },
+];
+
+function isActive(path: string, current: string) {
+  return current.startsWith(path);
+}
+---
+
+<nav class="project-sub-nav" aria-label="Project navigation">
+  <ul class="subnav-list">
+    {projects.map((item) => (
+      <li class="subnav-item">
+        <span class="subnav-number">{item.n}</span>
+        <a
+          href={item.path}
+          class={`subnav-link ${isActive(item.path, currentPath) ? 'active' : ''}`}
+          aria-current={isActive(item.path, currentPath) ? 'page' : undefined}
+        >
+          {item.title}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

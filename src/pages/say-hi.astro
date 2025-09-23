@@ -15,23 +15,9 @@ import Navigation from '../components/Navigation.astro';
 	<body>
 		<Navigation currentPath={Astro.url.pathname} />
 		
-		<main class="contact-page">
-			<div class="content-container">
-				<h1 class="text-headline">Say Hi</h1>
-				<p class="text-body">Get in touch - contact information coming soon...</p>
-			</div>
+		<main class="container">
+			<h1 class="text-headline">Say Hi</h1>
+			<p class="text-body">Get in touch - contact information coming soon...</p>
 		</main>
 	</body>
 </html>
-
-<style>
-	.contact-page {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 2rem 1rem;
-	}
-
-	.content-container {
-		max-width: 800px;
-	}
-</style>

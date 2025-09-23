@@ -41,10 +41,11 @@ const { images, id } = Astro.props;
 		const carousels = document.querySelectorAll('.embla');
 		
 		carousels.forEach((carousel) => {
-			const viewport = carousel.querySelector('.embla__viewport');
-			const dots = carousel.querySelectorAll('.embla__dot');
+			const viewport = carousel.querySelector<HTMLElement>('.embla__viewport');
+			const dots = carousel.querySelectorAll<HTMLButtonElement>('.embla__dot');
 			
-			if (!viewport) return;
+			// Ensure we have a concrete HTMLElement for Embla
+			if (!(viewport instanceof HTMLElement)) return;
 			
 			const embla = EmblaCarousel(viewport, {
 				loop: true,

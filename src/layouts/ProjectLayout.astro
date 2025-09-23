@@ -2,6 +2,7 @@
 import '../styles/project.css';
 import '../styles/global.css';
 import Navigation from '../components/Navigation.astro';
+import ProjectSubNav from '../components/ProjectSubNav.astro';
 
 export interface Props {
 	title: string;
@@ -21,7 +22,8 @@ const { title, headline, intro } = Astro.props;
 	</head>
 	<body>
 		<Navigation currentPath={Astro.url.pathname} />
-		<div class="project-container">
+		<ProjectSubNav currentPath={Astro.url.pathname} />
+		<div class="container">
 
 			<!-- Header Section -->
 			<header class="project-header">

@@ -82,7 +82,7 @@ nav a {
 }
 
 nav a:hover {
-	opacity: 0.7;
+	text-decoration: underline;
 }
 
 /* Lists */
@@ -102,7 +102,7 @@ a {
 }
 
 a:hover {
-	opacity: 0.7;
+	text-decoration: underline;
 }
 
 /* Utility classes for explicit control */
