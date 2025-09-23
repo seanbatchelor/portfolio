@@ -2,6 +2,7 @@
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
 import ContentColumn from '../../components/ContentColumn.astro';
+
 ---
 
 <ProjectLayout 
@@ -9,7 +10,7 @@ import ContentColumn from '../../components/ContentColumn.astro';
 	headline="Cecil's mission is to unlock data driven environmental markets"
 	intro="<a href='https://cecil.earth'>Cecil</a> is a seed stage startup, founded after the Black Summer bushfires by a team motivated to be part of the climate solution. I joined as Head of Design to lead product experience and brand as the business sought product-market fit."
 >
-	<ProjectSection image='/src/images/projects/cecil/Problem.png' imageAlt="Cecil problem" subheading="Generic tools don’t support the method-specific implementation and operations of nature based projects">
+	<ProjectSection image={'/images/projects/cecil/Problem.png'} imageAlt="Cecil problem" subheading="Generic tools don’t support the method-specific implementation and operations of nature based projects">
 		<ContentColumn position={1}>
 			Nature asset and NBS project managers must ensure project methodologies are being followed, track projected and approved inventory (e.g. carbon credits), collect and analyse environmental data, manage project budgets and costs, and ensure tasks for a range of specialists are being completed methodically across multiple, geographically distributed projects.
 		</ContentColumn>
@@ -20,11 +21,11 @@ import ContentColumn from '../../components/ContentColumn.astro';
 
 	<ProjectSection 
 		images={[
-			{ src: "/src/images/projects/cecil/Solution-Pipeline-1-0x0.png", alt: "Cecil solution pipeline" },
-			{ src: "/src/images/projects/cecil/Solution-Pipeline-0x0.png", alt: "Cecil solution create project" },
-			{ src: "/src/images/projects/cecil/Solution-Project-0x0.png", alt: "Cecil solution project overview" },
-			{ src: "/src/images/projects/cecil/Solution-Tasks-0x0.png", alt: "Cecil solution task management" },
-			{ src: "/src/images/projects/cecil/Solution-Inventory-overview-1-0x0.png", alt: "Cecil solution inventory management" }
+			{ src: '/images/projects/cecil/Solution-Pipeline-1-0x0.png', alt: "Cecil solution pipeline" },
+			{ src: '/images/projects/cecil/Solution-Pipeline-0x0.png', alt: "Cecil solution create project" },
+			{ src: '/images/projects/cecil/Solution-Project-0x0.png', alt: "Cecil solution project overview" },
+			{ src: '/images/projects/cecil/Solution-Tasks-0x0.png', alt: "Cecil solution task management" },
+			{ src: '/images/projects/cecil/Solution-Inventory-overview-1-0x0.png', alt: "Cecil solution inventory management" }
 		]}
 		subheading="The Cecil Workspace keeps natural assets and nature based projects under control"
 	>
@@ -33,7 +34,7 @@ import ContentColumn from '../../components/ContentColumn.astro';
 		</ContentColumn>
 	</ProjectSection>
 
-	<ProjectSection image='/src/images/projects/cecil/Design-process-1.png' imageAlt="Design process" subheading="I implemented a stable, yet flexible design process to manage diverse product requirements">
+	<ProjectSection image={'/images/projects/cecil/Design-process-1.png'} imageAlt="Design process" subheading="I implemented a stable, yet flexible design process to manage diverse product requirements">
 		<ContentColumn position={1}>
 			As a design team of one, working directly with founders and customers, and a distributed engineering team, I developed a design process to prioritise and accommodate larger projects, incremental feature improvements, and necessary design system updates.
 		</ContentColumn>
@@ -42,7 +43,7 @@ import ContentColumn from '../../components/ContentColumn.astro';
 		</ContentColumn>
 	</ProjectSection>
 
-	<ProjectSection image='/src/images/projects/cecil/Research-for-pivot.png' imageAlt="Research for pivot" subheading="A substantial strategic shift necessitated deep qualitative research to build empathy for a new specialist end-user">
+	<ProjectSection image={'/images/projects/cecil/Research-for-pivot.png'} imageAlt="Research for pivot" subheading="A substantial strategic shift necessitated deep qualitative research to build empathy for a new specialist end-user">
 		<ContentColumn position={1}>
 			Organically, a new insight emerged that the real source of teams’ problems, was the data workflows that underpin every stage of the project.
 
@@ -57,10 +58,10 @@ import ContentColumn from '../../components/ContentColumn.astro';
 
 	<ProjectSection 
 		images={[
-			{ src: "/src/images/projects/cecil/Brand-positioning-Logo-1-0x0.png", alt: "Cecil logo before v after" },
-			{ src: "/src/images/projects/cecil/Brand-positioning-motif-phtography-0x0.png", alt: "Brand motif and imagery" },
-			{ src: "/src/images/projects/cecil/Brand-positioning-Brand-1-0x0.png", alt: "Brand colour and typography" },
-			{ src: "/src/images/projects/cecil/Brand-positioning-Landing-page-2-0x0.png", alt: "Cecil solution task management" }
+			{ src: '/images/projects/cecil/Brand-positioning-Logo-1-0x0.png', alt: "Cecil logo before v after" },
+			{ src: '/images/projects/cecil/Brand-positioning-motif-phtography-0x0.png', alt: "Brand motif and imagery" },
+			{ src: '/images/projects/cecil/Brand-positioning-Brand-1-0x0.png', alt: "Brand colour and typography" },
+			{ src: '/images/projects/cecil/Brand-positioning-Landing-page-2-0x0.png', alt: "Cecil solution task management" }
 		]}
 		subheading="Cecil’s product positioning and brand identity needed to be reviewed, in light of the new product vision"
 	>
@@ -68,7 +69,8 @@ import ContentColumn from '../../components/ContentColumn.astro';
 			Taking a lean approach, with support from an external contractor, I led the team through a rebranding exercise. A new logo, colour and typography system as well as a versatile graphic motif were developed, forming the foundation of a strong, data-oriented visual language.
 		</ContentColumn>
 		<ContentColumn position={2}>
-			In parallel, I led a product positioning initiative to define the new value proposition, in relation to the problems with existing alternatives, the differentiated value of the solution and the market category it fits within.		</ContentColumn>
+			In parallel, I led a product positioning initiative to define the new value proposition, in relation to the problems with existing alternatives, the differentiated value of the solution and the market category it fits within.
+		</ContentColumn>
 	</ProjectSection>
 
 </ProjectLayout>
