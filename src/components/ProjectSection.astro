@@ -9,13 +9,48 @@ export interface Props {
 		alt: string;
 	}>;
 	subheading: string;
+	// Optional MP4 video support
+	videoSrc?: string; // e.g., '/videos/demo.mp4' (served from public/)
+	poster?: string;   // optional poster image displayed before playback
+	controls?: boolean; // default true
+	autoplay?: boolean; // if true, will force muted + playsinline to be mobile-friendly
+	loop?: boolean;     // loop playback
+	muted?: boolean;    // default true when autoplay is enabled
 }
 
-const { image, imageAlt, images, subheading } = Astro.props;
+const {
+  image,
+  imageAlt,
+  images,
+  subheading,
+  videoSrc,
+  poster,
+  controls = true,
+  autoplay = false,
+  loop = false,
+  muted,
+} = Astro.props;
+
+// Ensure mobile-safe autoplay behavior: if autoplay is on, force muted true
+const effectiveMuted = autoplay ? true : (muted ?? false);
 const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
 <section class="project-section">
+	{videoSrc && (
+		<div class="project-image-container">
+			<video
+				class="project-video"
+				src={videoSrc}
+				poster={poster}
+				controls={controls}
+				autoplay={autoplay}
+				loop={loop}
+				muted={effectiveMuted}
+				playsinline
+			></video>
+		</div>
+	)}
 	{images && images.length > 1 && (
 		<div class="project-image-container">
 			<ImageCarousel images={images} id={carouselId} />
@@ -34,7 +69,7 @@ const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
 		</div>
 	)}
 	
-	{!image && !images && (
+	{!image && !images && !videoSrc && (
 		<div class="project-image-container">
 			<div class="project-image-placeholder">{imageAlt || 'Image placeholder'}</div>
 		</div>
