@@ -104,6 +104,13 @@ body, html {
 	color: hsl(13, 91%, 59%);
 }
 
+/* Say Hi Columns */
+.say-hi-columns {
+	display:grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2rem;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
 	.global-nav {
@@ -115,6 +122,11 @@ body, html {
 		row-gap: .5rem;
 		padding-left: 1rem;
 		padding-right: 1rem;
+	}
+
+	/* Say Hi grid: collapse to single column on small screens */
+	.say-hi-columns {
+		grid-template-columns: 1fr;
 	}
 
 	.project-sub-nav {
