@@ -6,12 +6,50 @@ import ContentColumn from '../../components/ContentColumn.astro';
 
 <ProjectLayout 
   title="FreshBooks"
-  headline="Placeholder headline for FreshBooks project"
-  intro="This is a placeholder page for the FreshBooks project. Content coming soon."
+  headline="Bank Reconciliation in FreshBooks helps business owners stay on top of their books without having to learn accounting"
+  intro="In 2018, <a href='https://www.freshbooks.com/' target='_blank'>FreshBooks</a> began adding double-entry accounting features to it’s billing platform, helping small businesses prepare for tax time and grow their business. I led the design of the first iteration of the new Bank Reconciliation feature, and continued shaping the product whilst in beta."
 >
-  <ProjectSection subheading="Overview">
+  <ProjectSection image='/images/projects/freshbooks/1Artboard-1@2x.png' imageAlt="Freshbooks problem" subheading="Reconciling bank accounts can be slow and difficult for business owners who aren’t confident bookkeepers">
     <ContentColumn position={1}>
-      This page will showcase the FreshBooks project. We'll add case study details, images, and outcomes here.
+      For many small businesses, Bank Reconciliation involves eye-balling every transaction on their statements and ensuring they’re allocated to the appropriate account. The process is slow, and at times, technically advanced.
+    </ContentColumn>
+    <ContentColumn position={2}>
+      Business owners often get tired of the process and either end up paying for it to be outsourced, do it quickly and risk errors, or simply neglect the task all together, leaving them unprepared at tax time.
+    </ContentColumn>
+  </ProjectSection>
+
+  <ProjectSection images={ [
+      { src: '/images/projects/freshbooks/Bank-Rec-Widget-1-0x0.png', alt: "Bank reconciliation" },
+      { src: '/images/projects/freshbooks/Bank-Rec-Smart-Match-1-0x0.png', alt: "Smart match" },
+      { src: '/images/projects/freshbooks/Bank-Rec-Match-Page-1-0x0.png', alt: "Match page" }
+    ]} 
+    subheading="FreshBooks helps owners reconcile transactions as they happen, with a tactile workflow to guide and motivate them through the process"
+  >
+    <ContentColumn position={1}>
+      FreshBooks turns a long monthly process into a few quick tasks, by automatically importing transactions and suggesting likely matches to FreshBooks entries.    </ContentColumn>
+    <ContentColumn position={2}>
+      When a transaction can’t be automatically matched, owners can easily search their accounts and match it manually or if it’s missing, create an entry on the fly.
+    </ContentColumn>
+  </ProjectSection>
+
+  <ProjectSection images={[
+      { src: '/images/projects/freshbooks/BankRecBefore1-0x0.png', alt: "Bank reconciliation" },
+      { src: '/images/projects/freshbooks/BankRecAfter1-0x0.png', alt: "Match page" }
+    ]} 
+    subheading="After the Beta launch in December 2018, we improved and stabilized the product based on engagement data and qualitative testing"
+  >
+    <ContentColumn position={1}>
+      In the months following the beta launch, we identified and prioritised opportunities to improve the product; from bugs and hygiene features, to unsupported workflows and experience enhancements.
+    </ContentColumn>
+  </ProjectSection>
+
+  <ProjectSection image='/images/projects/freshbooks/Process-image (1).jpg' imageAlt='Design process' subheading="Bank Reconciliation in Freshbooks required a cross-functional team to solve problems collaboratively">
+    <ContentColumn position={1}>
+      Each problem started with a full-team kickoff, bringing support reps and accounting experts into the fold.
+      I facilitated the group in understanding the problem and sketching a hypothetical solution which could then be broken into discreet pieces of development work.
+    </ContentColumn>
+    <ContentColumn position={2}>
+      This process created a sense of shared ownership for the solution, facilitated learning, and ensured we made the most of our team’s individual strengths.
     </ContentColumn>
   </ProjectSection>
 </ProjectLayout>
