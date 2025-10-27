@@ -93,7 +93,7 @@
 .embla__container {
 	display: flex;
 	backface-visibility: hidden;
-	touch-action: pan-y;
+	touch-action: pan-y pinch-zoom;
 }
 
 .embla__slide {
@@ -233,5 +233,22 @@
 	
 	.project-section {
 		margin-bottom: 50px;
+	}
+	
+	/* Full-width images on mobile - no rounded corners */
+	.project-image-container {
+		border-radius: 0;
+		margin-left: -1.5rem;
+		margin-right: -1.5rem;
+		width: calc(100% + 3rem);
+		max-width: none;
+	}
+	
+	.embla__viewport {
+		border-radius: 0;
+	}
+	
+	.project-image-placeholder {
+		border-radius: 0;
 	}
 }

@@ -49,7 +49,14 @@ const { images, id } = Astro.props;
 			
 			const embla = EmblaCarousel(viewport, {
 				loop: true,
-				align: 'center'
+				align: 'center',
+				watchDrag: (emblaApi, evt) => {
+					// Allow pinch-zoom by disabling drag when multi-touch detected
+					if (evt instanceof TouchEvent && evt.touches.length > 1) {
+						return false;
+					}
+					return true;
+				}
 			});
 			
 			// Update dot states
