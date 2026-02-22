@@ -34,6 +34,21 @@
 	margin-bottom: 30px;
 }
 
+/* Optional two-column intro (use wrapper .project-intro-columns in intro HTML) */
+.project-intro-columns {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 30px;
+}
+
+.project-intro-columns .intro-col p {
+	margin: 0 0 15px 0;
+}
+
+.project-intro-columns .intro-col p:last-child {
+	margin-bottom: 0;
+}
+
 /* Project Sections */
 .project-section {
 	margin-bottom: 80px;
@@ -218,6 +233,11 @@
 	
 	.project-header .header-content {
 		grid-column: 1;
+	}
+	
+	.project-intro-columns {
+		grid-template-columns: 1fr;
+		gap: 20px;
 	}
 	
 	.project-content {

@@ -1,0 +1,88 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import ProjectSection from '../../components/ProjectSection.astro';
+import ContentColumn from '../../components/ContentColumn.astro';
+
+// Placeholder images via placehold.co (replace with real assets later)
+const placeholders = {
+	section1: 'https://placehold.co/1200x700/eee/333?text=Quote+comparison',
+	section2: 'https://placehold.co/1200x700/eee/333?text=Editing+controls',
+	section3: 'https://placehold.co/1200x700/eee/333?text=Credit+system',
+	section4: 'https://placehold.co/1200x700/eee/333?text=Marketing+site',
+	section5: 'https://placehold.co/1200x700/eee/333?text=Visual+identity',
+};
+
+const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>In July 2025, Series A scale-up ProcurePro formed a small team to build an AI-native product designed to scale through product-led growth.</p><p>I joined as the founding designer. I owned the product experience and brand, and worked across research, strategy, UX, UI, and front-end development.</p></div><div class="intro-col"><p>From day one, I sought to go beyond static mock-ups. I used AI tools to prototype complex interactions, fix UI bugs independently, and collaborate with engineers on feature delivery. I facilitated customer research interviews, synthesised insights, and contributed to weekly scoping and sequencing decisions.</p></div></div>`;
+---
+
+<ProjectLayout
+	title="Bidlevel"
+	headline="BidLevel turns vendor quotes into comparable price comparisons in minutes, not hours"
+	intro={introHtml}
+>
+	<ProjectSection
+		image={placeholders.section1}
+		imageAlt="BidLevel quote comparison"
+		subheading="Cutting hours of construction admin"
+	>
+		<ContentColumn position={1}>
+			Selecting a subcontractor typically involves manually restructuring multiple quotes into a like-for-like format. It's often hours of copy-paste from PDFs into Excel before analysis even begins.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			With BidLevel, users upload quotes, generate a structured breakdown, and produce a first-pass price comparison in minutes, with AI.
+		</ContentColumn>
+	</ProjectSection>
+
+	<ProjectSection
+		image={placeholders.section2}
+		imageAlt="BidLevel editing controls"
+		subheading="Enabling full editing controls to fix extraction errors in-product"
+	>
+		<ContentColumn position={1}>
+			After extraction, users valued the ability to review pricing alongside highlighted source documents. However, when errors appeared, they had to export to Excel to correct them, losing the benefit of side-by-side review.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			To make edits, we assumed excel-native users expected familiar behaviour. After prototyping the necessary interactions, we rebuilt the UI and underlying data schema to support seamless, keyboard-driven editing.
+		</ContentColumn>
+	</ProjectSection>
+
+	<ProjectSection
+		image={placeholders.section3}
+		imageAlt="BidLevel credit system"
+		subheading="Introducing credits to drive feedback and validate value"
+	>
+		<ContentColumn position={1}>
+			Our early user base wasn't providing enough consistent qualitative feedback, despite multiple survey attempts. We also needed to test whether users valued the product enough to make a form of payment during free beta.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			We introduced a simple credit system, with feedback as the primary top-up mechanism. Feedback response rates increased from 2% to 30%, giving us significantly stronger signals on product quality and perceived value.
+		</ContentColumn>
+	</ProjectSection>
+
+	<ProjectSection
+		image={placeholders.section4}
+		imageAlt="BidLevel marketing site"
+		subheading="Designing and iterating on the marketing site weekly"
+	>
+		<ContentColumn position={1}>
+			We needed a web presence to test go-to-market assumptions. In a single sprint, we shipped a live landing page capable of capturing leads.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			From there, I made iterations each sprint based on paid acquisition learnings, refining messaging, hierarchy, and layout to improve conversion.
+		</ContentColumn>
+	</ProjectSection>
+
+	<ProjectSection
+		image={placeholders.section5}
+		imageAlt="BidLevel visual identity"
+		subheading="Creating a fast, flexible visual identity"
+	>
+		<ContentColumn position={1}>
+			As BidLevel needed to attract a broader market than ProcurePro's existing ICP, I created a distinct but lightweight identity that worked across product and marketing.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			The goal was speed and consistency, a system simple enough to evolve rapidly, but structured enough to maintain cohesion.
+		</ContentColumn>
+	</ProjectSection>
+
+</ProjectLayout>
