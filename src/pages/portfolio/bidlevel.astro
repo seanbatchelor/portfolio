@@ -3,26 +3,30 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
 import ContentColumn from '../../components/ContentColumn.astro';
 
-// Placeholder images via placehold.co (replace with real assets later)
+// First section uses image + play overlay, then video on click
+const bidlevelVideoWithPoster = {
+	poster: '/images/projects/bidlevel/BidLevel.png',
+	videoSrc: '/video/BidLevelVideo.mp4',
+	alt: 'BidLevel quote comparison interface',
+};
+// Placeholder images via placehold.co for remaining sections
 const placeholders = {
-	section1: 'https://placehold.co/1200x700/eee/333?text=Quote+comparison',
 	section2: 'https://placehold.co/1200x700/eee/333?text=Editing+controls',
 	section3: 'https://placehold.co/1200x700/eee/333?text=Credit+system',
-	section4: 'https://placehold.co/1200x700/eee/333?text=Marketing+site',
-	section5: 'https://placehold.co/1200x700/eee/333?text=Visual+identity',
+	section4: '/images/projects/bidlevel/Website.png',
+	section5: '/images/projects/bidlevel/Brand.png',
 };
 
-const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>In July 2025, Series A scale-up ProcurePro formed a small team to build an AI-native product designed to scale through product-led growth.</p><p>I joined as the founding designer. I owned the product experience and brand, and worked across research, strategy, UX, UI, and front-end development.</p></div><div class="intro-col"><p>From day one, I sought to go beyond static mock-ups. I used AI tools to prototype complex interactions, fix UI bugs independently, and collaborate with engineers on feature delivery. I facilitated customer research interviews, synthesised insights, and contributed to weekly scoping and sequencing decisions.</p></div></div>`;
+const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>In July 2025, Series A scale-up <a href="https://www.procurepro.co/" target="_blank">ProcurePro</a> formed a small team to build <a href="https://www.bidlevel.ai/" target="_blank">BidLevel</a>, an AI-native product designed to scale through product-led growth.</p><p>I joined as the founding designer. I owned the product experience and brand, and worked across research, strategy, UX, UI, and front-end development.</p></div><div class="intro-col"><p>From day one, I sought to go beyond static mock-ups. I used AI tools to prototype complex interactions, fix UI bugs independently, and collaborate with engineers on feature delivery. I facilitated customer research interviews, synthesised insights, and contributed to weekly scoping and sequencing decisions.</p></div></div>`;
 ---
 
 <ProjectLayout
 	title="Bidlevel"
-	headline="BidLevel turns vendor quotes into comparable price comparisons in minutes, not hours"
+	headline="BidLevel transforms inconsistent subcontractor quotes into like-for-like price comparisons in minutes"
 	intro={introHtml}
 >
 	<ProjectSection
-		image={placeholders.section1}
-		imageAlt="BidLevel quote comparison"
+		videoWithPlayOverlay={bidlevelVideoWithPoster}
 		subheading="Cutting hours of construction admin"
 	>
 		<ContentColumn position={1}>

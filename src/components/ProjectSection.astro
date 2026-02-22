@@ -16,6 +16,8 @@ export interface Props {
 	autoplay?: boolean; // if true, will force muted + playsinline to be mobile-friendly
 	loop?: boolean;     // loop playback
 	muted?: boolean;    // default true when autoplay is enabled
+	// Poster image with play overlay: click swaps to video and plays
+	videoWithPlayOverlay?: { poster: string; videoSrc: string; alt: string };
 }
 
 const {
@@ -29,15 +31,37 @@ const {
   autoplay = false,
   loop = false,
   muted,
+  videoWithPlayOverlay,
 } = Astro.props;
 
 // Ensure mobile-safe autoplay behavior: if autoplay is on, force muted true
 const effectiveMuted = autoplay ? true : (muted ?? false);
 const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
+const playOverlayId = `play-overlay-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
 <section class="project-section">
-	{videoSrc && (
+	{videoWithPlayOverlay && (
+		<div class="project-image-container project-video-play-overlay-wrap" data-play-overlay-id={playOverlayId}>
+			<div class="project-video-poster-layer">
+				<img src={videoWithPlayOverlay.poster} alt={videoWithPlayOverlay.alt} class="project-image" />
+				<button type="button" class="project-video-play-overlay" aria-label="Play video">
+					<svg class="project-video-play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+						<path d="M8 5v14l11-7z"/>
+					</svg>
+				</button>
+			</div>
+			<video
+				class="project-video project-video-reveal"
+				src={videoWithPlayOverlay.videoSrc}
+				controls
+				playsinline
+				preload="metadata"
+				data-play-overlay-video
+			></video>
+		</div>
+	)}
+	{videoSrc && !videoWithPlayOverlay && (
 		<div class="project-image-container">
 			<video
 				class="project-video"
@@ -63,13 +87,13 @@ const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
 		</div>
 	)}
 	
-	{image && !images && (
+	{image && !images && !videoWithPlayOverlay && (
 		<div class="project-image-container">
 			<img src={image} alt={imageAlt} class="project-image" />
 		</div>
 	)}
 	
-	{!image && !images && !videoSrc && (
+	{!image && !images && !videoSrc && !videoWithPlayOverlay && (
 		<div class="project-image-container">
 			<div class="project-image-placeholder">{imageAlt || 'Image placeholder'}</div>
 		</div>
@@ -82,3 +106,23 @@ const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
 		<slot />
 	</div>
 </section>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		document.querySelectorAll<HTMLElement>('.project-video-play-overlay-wrap').forEach((wrap) => {
+			const video = wrap.querySelector<HTMLVideoElement>('[data-play-overlay-video]');
+			const posterLayer = wrap.querySelector('.project-video-poster-layer');
+			if (!video || !posterLayer) return;
+			const showVideo = () => {
+				wrap.classList.add('is-playing');
+				video.play().catch(() => {});
+			};
+			const showPoster = () => {
+				wrap.classList.remove('is-playing');
+			};
+			posterLayer.addEventListener('click', showVideo);
+			video.addEventListener('click', (e) => e.stopPropagation());
+			video.addEventListener('ended', showPoster);
+		});
+	});
+</script>

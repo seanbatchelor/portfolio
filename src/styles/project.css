@@ -82,6 +82,66 @@
 	background: #000; /* nice backdrop while loading */
 }
 
+/* Poster + play overlay: click to reveal video and play */
+.project-video-play-overlay-wrap {
+	position: relative;
+	cursor: pointer;
+}
+
+.project-video-play-overlay-wrap .project-video-poster-layer {
+	position: relative;
+	display: block;
+}
+
+.project-video-play-overlay-wrap.is-playing .project-video-poster-layer {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.25s ease;
+}
+
+.project-video-play-overlay-wrap .project-video-reveal {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.project-video-play-overlay-wrap.is-playing .project-video-reveal {
+	position: relative;
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.project-video-play-overlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: rgba(0, 0, 0, 0.35);
+	cursor: pointer;
+	transition: background 0.2s ease;
+}
+
+.project-video-play-overlay:hover {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.project-video-play-icon {
+	width: 72px;
+	height: 72px;
+	color: #fff;
+	filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
 .project-image-placeholder {
 	width: 100%;
 	height: 400px;
