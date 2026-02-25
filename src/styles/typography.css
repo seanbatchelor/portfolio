@@ -67,7 +67,7 @@ h3, h4, h5, h6, .subheading, strong, b {
 }	
 
 .subheading-column h3 {
-	font-size: clamp(1.25rem, 2.5vw, 1.25rem) !important;
+	font-size: clamp(1rem, 2.5vw, 1.125rem) !important;
 	font-weight: 600 !important;
 	line-height: 1.6 !important;
 }
