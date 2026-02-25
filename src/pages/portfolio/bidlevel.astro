@@ -54,8 +54,12 @@ const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>
 	</ProjectSection>
 
 	<ProjectSection
-		image={placeholders.section3}
-		imageAlt="BidLevel credit system"
+		images={[
+			{ src: '/images/projects/bidlevel/CreditSystemOverview.png', alt: 'Credit system use and earn overview' },
+			{ src: '/images/projects/bidlevel/CreditSystemWorking.png', alt: 'BidLevel credit system in product' },
+			{ type: 'video', src: '/video/BidLevelTopupmodal.mp4', alt: 'Top-up credits modal', poster: '/images/projects/bidlevel/CreditSystemOverview.png' },
+			{ type: 'video', src: '/video/BidLevelFeedback.mp4', alt: 'Feedback flow', poster: '/images/projects/bidlevel/CreditSystemWorking.png' },
+		]}
 		subheading="Introducing credits to drive feedback and validate value"
 	>
 		<ContentColumn position={1}>
