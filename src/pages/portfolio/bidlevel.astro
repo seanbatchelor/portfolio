@@ -38,8 +38,10 @@ const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>
 	</ProjectSection>
 
 	<ProjectSection
-		image={placeholders.section2}
-		imageAlt="BidLevel editing controls"
+		images={[
+			{ type: 'video', src: '/video/BidLevelEditing.mp4', alt: 'BidLevel editing demo', poster: '/images/projects/bidlevel/EditingWorking.png' },
+			{ src: '/images/projects/bidlevel/EditingWorking.png', alt: 'BidLevel editing UI and flow' },
+		]}
 		subheading="Enabling full editing controls to fix extraction errors in-product"
 	>
 		<ContentColumn position={1}>

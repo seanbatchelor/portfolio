@@ -1,13 +1,12 @@
 ---
 import ImageCarousel from './ImageCarousel.astro';
+import type { CarouselItem } from './ImageCarousel.astro';
 
 export interface Props {
 	image?: string;
 	imageAlt?: string;
-	images?: Array<{
-		src: string;
-		alt: string;
-	}>;
+	/** Carousel items: images and/or videos (type: 'video' for autoplay muted MP4). */
+	images?: CarouselItem[];
 	subheading: string;
 	// Optional MP4 video support
 	videoSrc?: string; // e.g., '/videos/demo.mp4' (served from public/)
@@ -83,7 +82,20 @@ const playOverlayId = `play-overlay-${Math.random().toString(36).substr(2, 9)}`;
 	
 	{images && images.length === 1 && (
 		<div class="project-image-container">
-			<img src={images[0].src} alt={images[0].alt} class="project-image" />
+			{images[0].type === 'video' ? (
+				<video
+					class="project-image project-video"
+					src={images[0].src}
+					poster={images[0].type === 'video' ? images[0].poster : undefined}
+					aria-label={images[0].alt}
+					autoplay
+					muted
+					loop
+					playsinline
+				></video>
+			) : (
+				<img src={images[0].src} alt={images[0].alt} class="project-image" />
+			)}
 		</div>
 	)}
 	

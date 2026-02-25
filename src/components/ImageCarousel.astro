@@ -1,21 +1,49 @@
 ---
+export interface CarouselImageItem {
+	type?: 'image';
+	src: string;
+	alt: string;
+}
+
+export interface CarouselVideoItem {
+	type: 'video';
+	src: string;
+	alt: string;
+	poster?: string;
+}
+
+export type CarouselItem = CarouselImageItem | CarouselVideoItem;
+
 export interface Props {
-	images: Array<{
-		src: string;
-		alt: string;
-	}>;
+	images: Array<CarouselItem>;
 	id: string;
 }
 
 const { images, id } = Astro.props;
+
+const isVideo = (item: CarouselItem): item is CarouselVideoItem => item.type === 'video';
 ---
 
 <div class="embla" data-carousel-id={id}>
 	<div class="embla__viewport">
 		<div class="embla__container">
-			{images.map((image) => (
+			{images.map((item) => (
 				<div class="embla__slide">
-					<img src={image.src} alt={image.alt} class="project-image" />
+					{isVideo(item) ? (
+						<video
+							class="project-image project-video embla__slide-video"
+							src={item.src}
+							poster={item.poster}
+							aria-label={item.alt}
+							autoplay
+							muted
+							loop
+							playsinline
+							data-embla-video
+						></video>
+					) : (
+						<img src={item.src} alt={item.alt} class="project-image" />
+					)}
 				</div>
 			))}
 		</div>
@@ -59,15 +87,27 @@ const { images, id } = Astro.props;
 				}
 			});
 			
-			// Update dot states
+			// Update dot states and play/pause videos in slides
 			const updateDots = () => {
 				const selectedIndex = embla.selectedScrollSnap();
 				dots.forEach((dot, index) => {
 					dot.classList.toggle('embla__dot--selected', index === selectedIndex);
 				});
+				// Pause all videos in this carousel, then play the selected slide's video
+				const slides = carousel.querySelectorAll('.embla__slide');
+				slides.forEach((slide, index) => {
+					const video = slide.querySelector<HTMLVideoElement>('[data-embla-video]');
+					if (video) {
+						if (index === selectedIndex) {
+							video.play().catch(() => {});
+						} else {
+							video.pause();
+						}
+					}
+				});
 			};
 			
-			// Initialize dots
+			// Initialize dots and video state
 			updateDots();
 			embla.on('select', updateDots);
 			

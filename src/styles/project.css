@@ -180,6 +180,10 @@
 	cursor: pointer;
 }
 
+.embla__slide-video {
+	object-fit: contain;
+}
+
 .embla__dots {
 	display: flex;
 	justify-content: center;
