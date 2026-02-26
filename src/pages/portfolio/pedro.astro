@@ -1,0 +1,20 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import ProjectSection from '../../components/ProjectSection.astro';
+
+const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>Software doesn't leave a mark. For your fingertips, Amazon feels the same as AirBnB. Your daily checklist can be different.</p></div></div>`;
+---
+
+<ProjectLayout
+	title="Pedro"
+	headline="They live a double life. One in a notebook, the other at a keyboard. "
+	intro={introHtml}
+>
+	<ProjectSection
+		images={[
+			{ type: 'video', src: '/video/Pedro.mp4', alt: 'Pedro', poster: '/images/projects/pedro/Pedro.png' },
+		]}
+		subheading="A mac app for me. And you. If you want it."
+	>
+	</ProjectSection>
+</ProjectLayout>
