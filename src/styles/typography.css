@@ -29,8 +29,13 @@ h1, h2, .headline {
 	margin-bottom: 1rem;
 }
 
+h3 {
+	font-size: clamp(1.25rem, 2.5vw, 1.5rem) !important;
+	line-height: 1.25;
+}
+
 /* Body Copy and Subheadings - Standard size */
-h3, h4, h5, h6, p, li, a, .body-text {
+h4, h5, h6, p, li, a, .body-text {
 	font-size: clamp(1rem, 2.5vw, 1.125rem) !important; /* Responsive: 16px to 18px */
 	font-weight: 400;
 	color: #222222;
@@ -56,20 +61,14 @@ h3, h4, h5, h6, p, li, a, .body-text {
 
 /* Project page h1 exception - use smaller size */
 .project-title {
-	font-size: clamp(1rem, 2.5vw, 1.125rem) !important;
-	font-weight: 600 !important;
-	line-height: 1.6 !important;
+	font-size: clamp(1rem, 2.5vw, 1.5rem);
+	line-height: 1.25;
+	font-weight: 600;
 }
 
 /* Bold variant for subheadings */
 h3, h4, h5, h6, .subheading, strong, b {
 	font-weight: 600;
-}	
-
-.subheading-column h3 {
-	font-size: clamp(1rem, 2.5vw, 1.125rem) !important;
-	font-weight: 600 !important;
-	line-height: 1.6 !important;
 }
 
 /* Ensure all text elements follow the system */

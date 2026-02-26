@@ -11,18 +11,18 @@ const placeholders = {
 	section5: '/images/projects/bidlevel/Brand.png',
 };
 
-const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>In July 2025, Series A scale-up <a href="https://www.procurepro.co/" target="_blank">ProcurePro</a> formed a small team to build <a href="https://www.bidlevel.ai/" target="_blank">BidLevel</a>, an AI-native product designed to scale through product-led growth.</p><p>I joined as the founding designer. I owned the product experience and brand, and worked across research, strategy, UX, UI, and front-end development.</p></div><div class="intro-col"><p>From day one, I sought to go beyond static mock-ups. I used AI tools to prototype complex interactions, fix UI bugs independently, and collaborate with engineers on feature delivery. I facilitated customer research interviews, synthesised insights, and contributed to weekly scoping and sequencing decisions.</p></div></div>`;
+const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>In July 2025, Series A scale-up <a href="https://www.procurepro.co/" target="_blank">ProcurePro</a> formed a small team to build <a href="https://www.bidlevel.ai/" target="_blank">BidLevel</a>, an AI-native product designed to scale through product-led growth.</p></div><div class="intro-col"><p>From day one, I sought to go beyond static mock-ups. I used AI tools to prototype complex interactions, fix UI bugs independently, and collaborate with engineers on feature delivery. I facilitated customer research interviews, synthesised insights, and contributed to weekly strategy, scoping and sequencing decisions.</p></div></div>`;
 ---
 
 <ProjectLayout
-	title="Bidlevel"
-	headline="BidLevel transforms inconsistent subcontractor quotes into like-for-like price comparisons in minutes"
+	title="BidLevel"
+	headline="BidLevel turns inconsistent subcontractor quotes into like-for-like price comparisons in minutes"
 	intro={introHtml}
 >
 	<ProjectSection
 		lottie="/animations/BidLevelCover.json"
 		lottieAlt="BidLevel quote comparison"
-		subheading="Cutting hours of construction admin"
+		subheading="Cutting hours of unnecessary construction admin"
 	>
 		<ContentColumn position={1}>
 			Selecting a subcontractor typically involves manually restructuring multiple quotes into a like-for-like format. It's often hours of copy-paste from PDFs into Excel before analysis even begins.
@@ -66,8 +66,12 @@ const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>
 	</ProjectSection>
 
 	<ProjectSection
-		image={placeholders.section4}
-		imageAlt="BidLevel marketing site"
+		images={[
+			{ src: '/images/projects/bidlevel/Website.png', alt: 'BidLevel marketing site' },
+			{ src: '/images/projects/bidlevel/MarketingSiteWorking.png', alt: 'Marketing site working' },
+			{ type: 'video', src: '/video/BidLevelChangelog.mp4', alt: 'BidLevel Releases', poster: '/images/projects/bidlevel/MarketingSiteWorking.png' },
+			{ type: 'video', src: '/video/BidLevelMobileSignupFlow.mp4', alt: 'BidLevel Releases', poster: '/images/projects/bidlevel/MarketingSiteWorking.png' },
+		]}
 		subheading="Designing and iterating on the marketing site weekly"
 	>
 		<ContentColumn position={1}>

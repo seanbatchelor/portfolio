@@ -22,8 +22,8 @@ function isActive(path: string, current: string) {
     </li>
     <li class="nav-item">
       <a 
-        href="/portfolio/cecil-earth" 
-        class={`nav-link ${isActive('/portfolio/cecil-earth', currentPath) ? 'active' : ''}`}
+        href="/portfolio/bidlevel" 
+        class={`nav-link ${currentPath.startsWith('/portfolio') ? 'active' : ''}`}
       >
         Work
       </a>

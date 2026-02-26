@@ -257,7 +257,6 @@
 }
 
 .content-column h3 {
-	margin-bottom: 15px;
 }
 
 .content-column p {
@@ -347,12 +346,12 @@
 		margin-bottom: 50px;
 	}
 	
-	/* Full-width images on mobile - no rounded corners */
+	/* Full-width images on mobile - no rounded corners, bleed to match 1em container padding */
 	.project-image-container {
 		border-radius: 0;
-		margin-left: -1.5rem;
-		margin-right: -1.5rem;
-		width: calc(100% + 3rem);
+		margin-left: -1em;
+		margin-right: -1em;
+		width: calc(100% + 2em);
 		max-width: none;
 	}
 	
