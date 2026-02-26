@@ -2,3 +2,6 @@ node_modules/
 .DS_Store
 .astro/
 dist/
+
+# Large installers – host elsewhere and link (e.g. GitHub Releases)
+*.dmg
