@@ -17,6 +17,9 @@ export interface Props {
 	muted?: boolean;    // default true when autoplay is enabled
 	// Poster image with play overlay: click swaps to video and plays
 	videoWithPlayOverlay?: { poster: string; videoSrc: string; alt: string };
+	/** Lottie animation JSON URL (e.g. '/animations/hero.json'). Autoplays, loops. */
+	lottie?: string;
+	lottieAlt?: string;
 }
 
 const {
@@ -31,6 +34,8 @@ const {
   loop = false,
   muted,
   videoWithPlayOverlay,
+  lottie,
+  lottieAlt,
 } = Astro.props;
 
 // Ensure mobile-safe autoplay behavior: if autoplay is on, force muted true
@@ -40,6 +45,16 @@ const playOverlayId = `play-overlay-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
 <section class="project-section">
+	{lottie && (
+		<div class="project-image-container project-lottie-wrap">
+			<div
+				class="project-lottie-container"
+				data-lottie-src={lottie}
+				role="img"
+				aria-label={lottieAlt ?? 'Animation'}
+			></div>
+		</div>
+	)}
 	{videoWithPlayOverlay && (
 		<div class="project-image-container project-video-play-overlay-wrap" data-play-overlay-id={playOverlayId}>
 			<div class="project-video-poster-layer">
@@ -105,7 +120,7 @@ const playOverlayId = `play-overlay-${Math.random().toString(36).substr(2, 9)}`;
 		</div>
 	)}
 	
-	{!image && !images && !videoSrc && !videoWithPlayOverlay && (
+	{!image && !images && !videoSrc && !videoWithPlayOverlay && !lottie && (
 		<div class="project-image-container">
 			<div class="project-image-placeholder">{imageAlt || 'Image placeholder'}</div>
 		</div>
@@ -120,6 +135,8 @@ const playOverlayId = `play-overlay-${Math.random().toString(36).substr(2, 9)}`;
 </section>
 
 <script>
+	import lottie from 'lottie-web';
+
 	document.addEventListener('DOMContentLoaded', () => {
 		document.querySelectorAll<HTMLElement>('.project-video-play-overlay-wrap').forEach((wrap) => {
 			const video = wrap.querySelector<HTMLVideoElement>('[data-play-overlay-video]');
@@ -135,6 +152,18 @@ const playOverlayId = `play-overlay-${Math.random().toString(36).substr(2, 9)}`;
 			posterLayer.addEventListener('click', showVideo);
 			video.addEventListener('click', (e) => e.stopPropagation());
 			video.addEventListener('ended', showPoster);
+		});
+
+		document.querySelectorAll<HTMLElement>('[data-lottie-src]').forEach((el) => {
+			const src = el.getAttribute('data-lottie-src');
+			if (!src) return;
+			lottie.loadAnimation({
+				container: el,
+				renderer: 'svg',
+				loop: true,
+				autoplay: true,
+				path: src,
+			});
 		});
 	});
 </script>

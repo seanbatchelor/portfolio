@@ -3,12 +3,6 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
 import ContentColumn from '../../components/ContentColumn.astro';
 
-// First section uses image + play overlay, then video on click
-const bidlevelVideoWithPoster = {
-	poster: '/images/projects/bidlevel/BidLevel.png',
-	videoSrc: '/video/BidLevelVideo.mp4',
-	alt: 'BidLevel quote comparison interface',
-};
 // Placeholder images via placehold.co for remaining sections
 const placeholders = {
 	section2: 'https://placehold.co/1200x700/eee/333?text=Editing+controls',
@@ -26,7 +20,8 @@ const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>
 	intro={introHtml}
 >
 	<ProjectSection
-		videoWithPlayOverlay={bidlevelVideoWithPoster}
+		lottie="/animations/BidLevelCover.json"
+		lottieAlt="BidLevel quote comparison"
 		subheading="Cutting hours of construction admin"
 	>
 		<ContentColumn position={1}>

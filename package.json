@@ -11,6 +11,7 @@
   "dependencies": {
     "astro": "^5.13.7",
     "embla-carousel": "^8.6.0",
-    "embla-carousel-autoplay": "^8.6.0"
+    "embla-carousel-autoplay": "^8.6.0",
+    "lottie-web": "^5.13.0"
   }
 }

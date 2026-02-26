@@ -82,6 +82,30 @@
 	background: #000; /* nice backdrop while loading */
 }
 
+/* Lottie animation container */
+.project-lottie-wrap {
+	display: block;
+}
+
+.project-lottie-container {
+	width: 100%;
+	min-height: 280px;
+	height: 56vw;
+	max-height: 900px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Force Lottie's wrapper and SVG to fill container width so animation scales to full width */
+.project-lottie-container > div,
+.project-lottie-container svg {
+	width: 100% !important;
+	height: 100% !important;
+	max-width: 100%;
+	object-fit: contain;
+}
+
 /* Poster + play overlay: click to reveal video and play */
 .project-video-play-overlay-wrap {
 	position: relative;
