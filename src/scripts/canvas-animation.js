@@ -89,6 +89,9 @@ function handleMouseMove(event) {
 	hoverState.black = inBlackTriangle;
 	hoverState.white = inWhiteTriangle;
 	
+	// Pointer cursor when hovering over triangles that change the colours
+	canvas.style.cursor = (inBlackTriangle || inWhiteTriangle) ? 'pointer' : 'default';
+	
 	if (prevHoverState.black !== hoverState.black || prevHoverState.white !== hoverState.white) {
 		drawGeometricDesign();
 	}
