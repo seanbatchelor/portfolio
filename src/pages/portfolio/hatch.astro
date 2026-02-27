@@ -2,71 +2,68 @@
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
 import ContentColumn from '../../components/ContentColumn.astro';
+
+const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>Hatch is a seed-stage startup founded by leaders from The Iconic and Zip Co. Its mission is to help people early in their careers find meaningful work.</p></div><div class="intro-col"><p>I joined as a product designer just before a major pandemic-era pivot, working across product experience, research, and brand as the company redefined its direction and prepared to relaunch.</p></div></div>`;
 ---
 
-<ProjectLayout 
-  title="Hatch"
-  headline="Hatch’s vision is a world where all people can find meaning in work"
-  intro="<a href='https://hatch.team'>Hatch</a> is a seed stage startup, led by ex-Iconic, and Zip Money founders. The product’s mission is to help people, early in their careers, find meaningful work. I joined as a product designer right before the business underwent a strategic pivot during the pandemic."
+<ProjectLayout
+	title="Hatch"
+	headline="Designing and launching a two-sided marketplace that matched early-career talent to meaningful work beyond the CV"
+	intro={introHtml}
 >
-  <ProjectSection image={'/images/projects/hatch/Problem-1.png'} imageAlt="Hatch problem" subheading="Hatch solves problems on both sides of the hiring journey">
-    <ContentColumn position={1} markdown="**Early-career job seekers** struggle to find meaningful roles. Their CVs don’t demonstrate their motivation and transferable skills, and the company culture for entry-level hires is unclear from job descriptions." />
-    <ContentColumn position={2} markdown="**Employers** rely on CVs, which are often the first point of candidate review and are a poor indicator of a person’s fit for the role, especially for candidates with limited comparable experience." />
-  </ProjectSection>
+	<ProjectSection image={'/images/projects/hatch/Problem-1.png'} imageAlt="Hatch problem" subheading="Early-career hiring relies on CVs that poorly represent motivation and long-term fit">
+		<ContentColumn position={1}>
+			Graduates struggle to communicate motivation and transferable skills through traditional CVs, while employers rely on CV screening as a primary filter for entry-level roles. For candidates with limited experience, this is a weak signal of alignment or potential.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			The result is inefficiency and missed matches. Hatch sets out to redesign the hiring journey around motivations, strengths, and values, rather than credentials alone.
+		</ContentColumn>
+	</ProjectSection>
 
-  <ProjectSection images={[
-      {src: '/images/projects/hatch/Solution-2-0x0.png', alt: 'Hatch solution'},
-      {src: '/images/projects/hatch/Solution-shortlist-0x0.png', alt: 'Hatch solution'},
-      {src: '/images/projects/hatch/Solution-process-0x0.png', alt: 'Hatch solution'}
-      ]} 
-      subheading="Hatch is a talent marketplace for early-career talent to find meaningful roles based on motivations and strengths, not CVs"
-  >
-    <ContentColumn position={1}>
-      I led the design for new features and enhancements to the product experience, including Employer profiles, applicant shortlists and iterations to the candidate profile.
-    </ContentColumn>
-    <ContentColumn position={2}>
-      Throughout design processes I worked closely with founders, engineering, and data science team members, and conducted targeted customer research and testing initiatives.
-    </ContentColumn>
-  </ProjectSection>
+	<ProjectSection images={[
+		{ src: '/images/projects/hatch/Solution-2-0x0.png', alt: 'Hatch solution' },
+		{ src: '/images/projects/hatch/Solution-shortlist-0x0.png', alt: 'Hatch solution' },
+		{ src: '/images/projects/hatch/Solution-process-0x0.png', alt: 'Hatch solution' }
+	]} subheading="We redesigned core marketplace features to support richer profiles, better shortlisting, and clearer employer reviews">
+		<ContentColumn position={1}>
+			The product evolved into a talent marketplace centred on candidate motivations and employer culture. I led design for employer profiles, applicant shortlists, and iterative improvements to the candidate profile experience.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			Working closely with founders, engineering, and data science, I ran targeted research and usability testing to validate changes before release and ensure both sides of the marketplace felt coherent and aligned.
+		</ContentColumn>
+	</ProjectSection>
 
-  <ProjectSection images={[
-      {src: '/images/projects/hatch/Sign-in-Hi-fi-1-0x0.png', alt: 'Sign in flow'},
-      {src: '/images/projects/hatch/Sign-in-1-1-0x0.png', alt: 'Sign in flow'},
-      {src: '/images/projects/hatch/Sign-in-2-0x0.png', alt: 'Sign in flow'}
-      ]} 
-      subheading="I designed a low-touch sign-up and sign-in experience for multi-user authentication"
-  >
-    <ContentColumn position={1}>
-      The sign in experience needed to accommodate both sign up and sign in flows, for employers and job seekers.
-      This meant several conditional forks in the UX needed to unfold seamlessly, and support a number of deep-linking scenarios.
-    </ContentColumn>
-    <ContentColumn position={2}>
-      I collaborated with engineering team members from early solution design sessions, gradually building fidelity to create a frictionless user experience that was technically robust.
-    </ContentColumn>
-  </ProjectSection>
+	<ProjectSection images={[
+		{ src: '/images/projects/hatch/Sign-in-Hi-fi-1-0x0.png', alt: 'Sign in flow' },
+		{ src: '/images/projects/hatch/Sign-in-1-1-0x0.png', alt: 'Sign in flow' },
+		{ src: '/images/projects/hatch/Sign-in-2-0x0.png', alt: 'Sign in flow' }
+	]} subheading="I designed a unified, low-friction authentication system to support multiple user types and complex flow logic">
+		<ContentColumn position={1}>
+			The platform required a single sign-up and sign-in experience that accommodated both candidates and employers, introducing conditional paths and deep-linking scenarios.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			I collaborated with engineering from early solution design through to high-fidelity prototypes, ensuring the final experience felt simple to users while remaining technically robust and scalable.
+		</ContentColumn>
+	</ProjectSection>
 
-  <ProjectSection image={'/images/projects/hatch/Positioning-Brand.png'} imageAlt="Positioning" subheading="I facilitated a process to align Hatch’s product and brand positioning as we prepared to launch in market">
-    <ContentColumn position={1}>
-      With the new product, we required alignment on positioning to effectively communicate the value proposition and present ourselves as a brand to both audiences.
-    </ContentColumn>
-    <ContentColumn position={2}>
-      Collaborating with founders, marketing, and growth teams, and leveraging April Dunford’s framework, we aligned on a positioning strategy to inform sales and marketing materials, including a revised brand.
-    </ContentColumn>
-  </ProjectSection>
+	<ProjectSection image={'/images/projects/hatch/Positioning-Brand.png'} imageAlt="Positioning" subheading="I facilitated positioning and brand alignment initiatives to support clear messaging for launch">
+		<ContentColumn position={1}>
+			Following the strategic shift, I led a positioning initiative with founders and growth team members, drawing on principles from April Dunford to clarify competitive alternatives, differentiated value, and category narrative.
+		</ContentColumn>
+	</ProjectSection>
 
-  <ProjectSection 
-    subheading="With foundational alignment on messaging, we were able to roll out launch materials"
-    videoSrc="/video/Hatch-Short-A-02.mp4"
-    controls={true}
-    autoplay={false}
-    loop={false}
-  >
-    <ContentColumn position={1}>
-      I developed easy-to-use templates and assets for marketing team members to roll out consistent, high quality materials, aligned with the brand.
-    </ContentColumn>
-    <ContentColumn position={2}>
-      As part of the campaign, and with a slim budget, I produced a short, animated promotional video.
-    </ContentColumn>
-  </ProjectSection>
-
+	<ProjectSection
+		subheading="With foundational alignment on messaging, we were able to roll out launch materials"
+		videoSrc="/video/Hatch-Short-A-02.mp4"
+		controls={true}
+		autoplay={false}
+		loop={false}
+	>
+		<ContentColumn position={1}>
+			I developed easy-to-use templates and assets for marketing team members to roll out consistent, high quality materials, aligned with the brand.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			As part of the campaign, and with a slim budget, I produced a short, animated promotional video.
+		</ContentColumn>
+	</ProjectSection>
 </ProjectLayout>
