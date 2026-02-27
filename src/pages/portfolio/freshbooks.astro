@@ -2,54 +2,55 @@
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
 import ContentColumn from '../../components/ContentColumn.astro';
+
+const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p>FreshBooks had begun expanding beyond invoicing into full double-entry accounting, helping small businesses run their business without needing to learn accounting.</p></div><div class="intro-col"><p>I led the design of the first iteration of the Bank Reconciliation feature and continued shaping the product through beta, working closely with engineering, product, support, and accounting specialists.</p></div></div>`;
 ---
 
-<ProjectLayout 
-  title="FreshBooks"
-  headline="Bank Reconciliation in FreshBooks helps business owners stay on top of their books without having to learn accounting"
-  intro="In 2018, <a href='https://www.freshbooks.com/' target='_blank'>FreshBooks</a> began adding double-entry accounting features to it’s billing platform, helping small businesses prepare for tax time and grow their business. I led the design of the first iteration of the new Bank Reconciliation feature, and continued shaping the product whilst in beta."
+<ProjectLayout
+	title="FreshBooks"
+	headline="Designing the first iteration of Bank Reconciliation to make double-entry accounting accessible to small business owners"
+	intro={introHtml}
 >
-  <ProjectSection image='/images/projects/freshbooks/1Artboard-1@2x.png' imageAlt="Freshbooks problem" subheading="Reconciling bank accounts can be slow and difficult for business owners who aren’t confident bookkeepers">
-    <ContentColumn position={1}>
-      For many small businesses, Bank Reconciliation involves eye-balling every transaction on their statements and ensuring they’re allocated to the appropriate account. The process is slow, and at times, technically advanced.
-    </ContentColumn>
-    <ContentColumn position={2}>
-      Business owners often get tired of the process and either end up paying for it to be outsourced, do it quickly and risk errors, or simply neglect the task all together, leaving them unprepared at tax time.
-    </ContentColumn>
-  </ProjectSection>
+	<ProjectSection image='/images/projects/freshbooks/1Artboard-1@2x.png' imageAlt="FreshBooks problem" subheading="Bank reconciliation is slow, error-prone, and intimidating for non-accountants">
+		<ContentColumn position={1}>
+			For many small businesses, reconciling accounts means manually reviewing every bank transaction and ensuring it is allocated correctly. The process is time-consuming and often technically confusing.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			As a result, owners either outsource it, rush it and risked errors, or avoid it altogether, risking inaccuracies and adding stress to tax.
+		</ContentColumn>
+	</ProjectSection>
 
-  <ProjectSection images={ [
-      { src: '/images/projects/freshbooks/Bank-Rec-Widget-1-0x0.png', alt: "Bank reconciliation" },
-      { src: '/images/projects/freshbooks/Bank-Rec-Smart-Match-1-0x0.png', alt: "Smart match" },
-      { src: '/images/projects/freshbooks/Bank-Rec-Match-Page-1-0x0.png', alt: "Match page" }
-    ]} 
-    subheading="FreshBooks helps owners reconcile transactions as they happen, with a tactile workflow to guide and motivate them through the process"
-  >
-    <ContentColumn position={1}>
-      FreshBooks turns a long monthly process into a few quick tasks, by automatically importing transactions and suggesting likely matches to FreshBooks entries.    </ContentColumn>
-    <ContentColumn position={2}>
-      When a transaction can’t be automatically matched, owners can easily search their accounts and match it manually or if it’s missing, create an entry on the fly.
-    </ContentColumn>
-  </ProjectSection>
+	<ProjectSection images={[
+		{ src: '/images/projects/freshbooks/Bank-Rec-Widget-1-0x0.png', alt: 'Bank reconciliation' },
+		{ src: '/images/projects/freshbooks/Bank-Rec-Smart-Match-1-0x0.png', alt: 'Smart match' },
+		{ src: '/images/projects/freshbooks/Bank-Rec-Match-Page-1-0x0.png', alt: 'Match page' }
+	]} subheading="We designed a guided, tactile workflow that helps owners reconcile transactions gradually rather once a month">
+		<ContentColumn position={1}>
+			FreshBooks automatically imports bank transactions and suggests likely matches to existing entries, turning a long monthly task into small, frequent actions.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			When a match can't be made automatically, users can search, allocate manually, or create a missing entry without leaving the workflow. The interface is made to feel clear and controlled, reducing cognitive load while maintaining accounting accuracy.
+		</ContentColumn>
+	</ProjectSection>
 
-  <ProjectSection images={[
-      { src: '/images/projects/freshbooks/BankRecBefore1-0x0.png', alt: "Bank reconciliation" },
-      { src: '/images/projects/freshbooks/BankRecAfter1-0x0.png', alt: "Match page" }
-    ]} 
-    subheading="After the Beta launch in December 2018, we improved and stabilized the product based on engagement data and qualitative testing"
-  >
-    <ContentColumn position={1}>
-      In the months following the beta launch, we identified and prioritised opportunities to improve the product; from bugs and hygiene features, to unsupported workflows and experience enhancements.
-    </ContentColumn>
-  </ProjectSection>
+	<ProjectSection images={[
+		{ src: '/images/projects/freshbooks/BankRecBefore1-0x0.png', alt: 'Bank reconciliation' },
+		{ src: '/images/projects/freshbooks/BankRecAfter1-0x0.png', alt: 'Match page' }
+	]} subheading="Post-beta, we stabilised and evolved the feature based on engagement data and qualitative testing">
+		<ContentColumn position={1}>
+			Following the December 2018 beta launch, we prioritised improvements across bugs, edge cases, unsupported workflows, and usability friction.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			I worked with product and engineering to sequence enhancements that improved clarity and reliability, ensuring the feature could support a growing cohort of small businesses with varying levels of accounting confidence.
+		</ContentColumn>
+	</ProjectSection>
 
-  <ProjectSection image='/images/projects/freshbooks/Process-image (1).jpg' imageAlt='Design process' subheading="Bank Reconciliation in Freshbooks required a cross-functional team to solve problems collaboratively">
-    <ContentColumn position={1}>
-      Each problem started with a full-team kickoff, bringing support reps and accounting experts into the fold.
-      I facilitated the group in understanding the problem and sketching a hypothetical solution which could then be broken into discreet pieces of development work.
-    </ContentColumn>
-    <ContentColumn position={2}>
-      This process created a sense of shared ownership for the solution, facilitated learning, and ensured we made the most of our team’s individual strengths.
-    </ContentColumn>
-  </ProjectSection>
+	<ProjectSection image='/images/projects/freshbooks/Process-image (1).jpg' imageAlt="Design process" subheading="I facilitated cross-functional collaboration to translate accounting complexity into usable product decisions">
+		<ContentColumn position={1}>
+			Each initiative began with a full-team kickoff, bringing support representatives and accounting experts into the room alongside product and engineering.
+		</ContentColumn>
+		<ContentColumn position={2}>
+			I facilitated problem framing and early solution sketching before breaking concepts into discrete, buildable pieces. This approach created shared ownership, incorporated domain expertise early, and ensured we balanced technical solutions with outcomes for the user.
+		</ContentColumn>
+	</ProjectSection>
 </ProjectLayout>
