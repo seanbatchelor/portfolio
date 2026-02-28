@@ -56,8 +56,12 @@ const { title, headline, intro, keywords } = Astro.props;
 
 			const navHeight = (globalNav?.offsetHeight ?? 0) + (subNav?.offsetHeight ?? 0);
 			document.documentElement.style.setProperty('--nav-height', `${navHeight}px`);
+
+			// Measure scrollbar width before locking so the page doesn't shift when it disappears
+			const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 			document.documentElement.style.overflow = 'hidden';
 			document.body.style.overflow = 'hidden';
+			document.body.style.paddingRight = `${scrollbarWidth}px`;
 
 			const maxTranslate = overlay.getBoundingClientRect().bottom;
 
@@ -69,6 +73,7 @@ const { title, headline, intro, keywords } = Astro.props;
 					overlay.style.pointerEvents = 'none';
 					document.documentElement.style.overflow = '';
 					document.body.style.overflow = '';
+					document.body.style.paddingRight = '';
 					window.removeEventListener('wheel', onWheel);
 					window.removeEventListener('touchstart', onTouchStart);
 					window.removeEventListener('touchmove', onTouchMove);
