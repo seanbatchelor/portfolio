@@ -62,7 +62,6 @@ const { title, headline, intro, keywords = [] } = Astro.props;
 			document.documentElement.style.overflow = 'hidden';
 			document.body.style.overflow = 'hidden';
 			document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
-			document.body.style.paddingRight = `${scrollbarWidth}px`;
 
 			const maxTranslate = overlay.getBoundingClientRect().bottom;
 
@@ -75,7 +74,6 @@ const { title, headline, intro, keywords = [] } = Astro.props;
 					document.documentElement.style.overflow = '';
 					document.body.style.overflow = '';
 					document.documentElement.style.paddingRight = '';
-					document.body.style.paddingRight = '';
 					window.removeEventListener('wheel', onWheel);
 					window.removeEventListener('touchstart', onTouchStart);
 					window.removeEventListener('touchmove', onTouchMove);

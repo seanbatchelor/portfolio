@@ -3,13 +3,14 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import ProjectSection from '../../components/ProjectSection.astro';
 import ContentColumn from '../../components/ContentColumn.astro';
 
+const introHtml = `<div class="project-intro-columns"><div class="intro-col"><p><a href="https://cecil.earth">Cecil</a> is a seed-stage climate startup founded after Australia's Black Summer bushfires. Its mission: unlock data-driven environmental markets.</p></div><div class="intro-col"><p>I joined as Head of Design to lead product experience and brand as the company searched for product–market fit. I worked directly with founders, customers, and a distributed engineering team, owning research, UX, UI, design systems, and brand.</p></div></div>`;
 ---
 
 <ProjectLayout 
 	title="Cecil.earth"
 	headline="Building the operating system for nature-based projects"
-	intro="<p><a href='https://cecil.earth'>Cecil</a> is a seed-stage climate startup founded after Australia’s Black Summer bushfires. Its mission: unlock data-driven environmental markets.</p> <p>I joined as Head of Design to lead product experience and brand as the company searched for product–market fit. I worked directly with founders, customers, and a distributed engineering team, owning research, UX, UI, design systems, and brand.</p>"
-	keywords={["Climate tech", "Head of Design", "0→1", "Product pivot", "User research", "Design system", "Brand & positioning", "Geospatial data"]}
+	intro={introHtml}
+	keywords={["Climate tech", "Head of Design", "0→1", "Early stage startup", "Productivity software", "Geospatial data", "Brand & positioning"]}
 >
 	<ProjectSection image={'/images/projects/cecil/Problem.png'} imageAlt="Cecil problem" subheading="Nature-based project teams were relying on fragmented, generic tools that increased reporting friction and project risk">
 		<ContentColumn position={1}>

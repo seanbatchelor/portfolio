@@ -132,6 +132,7 @@ body, html {
 	/* Say Hi grid: collapse to single column on small screens */
 	.say-hi-columns {
 		grid-template-columns: 1fr;
+		gap: 1rem;
 	}
 
 	.project-sub-nav {
