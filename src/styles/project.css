@@ -312,6 +312,34 @@
 	margin-top: 15px;
 }
 
+/* Project Overlay */
+.project-overlay {
+	position: fixed;
+	top: calc(var(--nav-height, 80px) + 1.5rem);
+	left: 1.5rem;
+	right: 1.5rem;
+	/* no bottom — card height is driven by content */
+	z-index: 200;
+	background: white;
+	border: 1px solid #eee;
+	border-radius: 20px;
+	padding: 4rem;
+	/* No transition — must track scroll 1:1 */
+}
+
+.project-overlay__keywords {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.project-overlay__keywords li {
+	font-size: clamp(2.5rem, 6vw, 5rem) !important;
+	line-height: 1.1;
+	font-weight: 700;
+	color: #222;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .project-container {

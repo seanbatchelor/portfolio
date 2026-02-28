@@ -8,9 +8,10 @@ export interface Props {
 	title: string;
 	headline: string;
 	intro: string;
+	keywords: string[];
 }
 
-const { title, headline, intro } = Astro.props;
+const { title, headline, intro, keywords } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -22,6 +23,11 @@ const { title, headline, intro } = Astro.props;
 		<title>{title} | Sean Batchelor</title>
 	</head>
 	<body>
+		<div class="project-overlay" id="project-overlay">
+			<ul class="project-overlay__keywords">
+				{keywords.map(k => <li>{k}</li>)}
+			</ul>
+		</div>
 		<Navigation currentPath={Astro.url.pathname} />
 		<ProjectSubNav currentPath={Astro.url.pathname} />
 		<div class="container">
@@ -40,5 +46,55 @@ const { title, headline, intro } = Astro.props;
 				<slot />
 			</main>
 		</div>
+		<script>
+			const overlay = document.getElementById('project-overlay')!;
+			const globalNav = document.querySelector<HTMLElement>('.global-nav');
+			const subNav = document.querySelector<HTMLElement>('.project-sub-nav');
+
+			let accumulatedDelta = 0;
+			const SCROLL_BUDGET = 600;
+
+			const navHeight = (globalNav?.offsetHeight ?? 0) + (subNav?.offsetHeight ?? 0);
+			document.documentElement.style.setProperty('--nav-height', `${navHeight}px`);
+			document.documentElement.style.overflow = 'hidden';
+			document.body.style.overflow = 'hidden';
+
+			const maxTranslate = overlay.getBoundingClientRect().bottom;
+
+			function applyProgress() {
+				const progress = Math.min(accumulatedDelta / SCROLL_BUDGET, 1);
+				overlay.style.transform = `translateY(${-progress * maxTranslate}px)`;
+
+				if (progress >= 1) {
+					overlay.style.pointerEvents = 'none';
+					document.documentElement.style.overflow = '';
+					document.body.style.overflow = '';
+					window.removeEventListener('wheel', onWheel);
+					window.removeEventListener('touchstart', onTouchStart);
+					window.removeEventListener('touchmove', onTouchMove);
+				}
+			}
+
+			function onWheel(e: WheelEvent) {
+				e.preventDefault();
+				accumulatedDelta = Math.max(0, accumulatedDelta + e.deltaY);
+				applyProgress();
+			}
+
+			let touchStartY = 0;
+			function onTouchStart(e: TouchEvent) {
+				touchStartY = e.touches[0].clientY;
+			}
+			function onTouchMove(e: TouchEvent) {
+				e.preventDefault();
+				accumulatedDelta = Math.max(0, accumulatedDelta + touchStartY - e.touches[0].clientY);
+				touchStartY = e.touches[0].clientY;
+				applyProgress();
+			}
+
+			window.addEventListener('wheel', onWheel, { passive: false });
+			window.addEventListener('touchstart', onTouchStart, { passive: true });
+			window.addEventListener('touchmove', onTouchMove, { passive: false });
+		</script>
 	</body>
 </html>
