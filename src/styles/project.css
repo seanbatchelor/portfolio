@@ -345,6 +345,13 @@
     .project-container {
         padding: 0 15px;
     }
+
+	.project-overlay {
+		top: calc(var(--nav-height, 80px) + 1rem);
+		left: 1rem;
+		right: 1rem;
+		padding: 1em;
+	}
 	
 	.project-header {
 		grid-template-columns: 1fr;
