@@ -123,7 +123,7 @@ const { title, headline, intro, keywords = [] } = Astro.props;
 
 				if (velocity > 0.3 || distance > 80) {
 					overlay.style.transition = 'transform 0.35s cubic-bezier(0.32, 0, 0.67, 0)';
-					overlay.style.transform = `translateY(-${overlay.offsetHeight}px)`;
+					overlay.style.transform = `translateY(-${maxTranslate}px)`;
 					overlay.addEventListener('transitionend', () => {
 						overlayDone = true;
 						unlockPage();
