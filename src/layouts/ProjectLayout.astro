@@ -52,7 +52,8 @@ const { title, headline, intro, keywords = [] } = Astro.props;
 			const subNav = document.querySelector<HTMLElement>('.project-sub-nav');
 
 			let accumulatedDelta = 0;
-			const SCROLL_BUDGET = 600;
+			const SCROLL_BUDGET_WHEEL = 600;
+			const SCROLL_BUDGET_TOUCH = 250;
 
 			const navHeight = (globalNav?.offsetHeight ?? 0) + (subNav?.offsetHeight ?? 0);
 			document.documentElement.style.setProperty('--nav-height', `${navHeight}px`);
@@ -65,8 +66,8 @@ const { title, headline, intro, keywords = [] } = Astro.props;
 
 			const maxTranslate = overlay.getBoundingClientRect().bottom;
 
-			function applyProgress() {
-				const progress = Math.min(accumulatedDelta / SCROLL_BUDGET, 1);
+			function applyProgress(budget: number) {
+				const progress = Math.min(accumulatedDelta / budget, 1);
 				overlay.style.transform = `translateY(${-progress * maxTranslate}px)`;
 
 				if (progress >= 1) {
@@ -75,15 +76,15 @@ const { title, headline, intro, keywords = [] } = Astro.props;
 					document.body.style.overflow = '';
 					document.documentElement.style.paddingRight = '';
 					window.removeEventListener('wheel', onWheel);
-					window.removeEventListener('touchstart', onTouchStart);
-					window.removeEventListener('touchmove', onTouchMove);
+					overlay.removeEventListener('touchstart', onTouchStart);
+					overlay.removeEventListener('touchmove', onTouchMove);
 				}
 			}
 
 			function onWheel(e: WheelEvent) {
 				e.preventDefault();
 				accumulatedDelta = Math.max(0, accumulatedDelta + e.deltaY);
-				applyProgress();
+				applyProgress(SCROLL_BUDGET_WHEEL);
 			}
 
 			let touchStartY = 0;
@@ -94,12 +95,12 @@ const { title, headline, intro, keywords = [] } = Astro.props;
 				e.preventDefault();
 				accumulatedDelta = Math.max(0, accumulatedDelta + touchStartY - e.touches[0].clientY);
 				touchStartY = e.touches[0].clientY;
-				applyProgress();
+				applyProgress(SCROLL_BUDGET_TOUCH);
 			}
 
 			window.addEventListener('wheel', onWheel, { passive: false });
-			window.addEventListener('touchstart', onTouchStart, { passive: true });
-			window.addEventListener('touchmove', onTouchMove, { passive: false });
+			overlay.addEventListener('touchstart', onTouchStart, { passive: true });
+			overlay.addEventListener('touchmove', onTouchMove, { passive: false });
 		</script>
 	</body>
 </html>
