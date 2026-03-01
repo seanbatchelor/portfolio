@@ -327,6 +327,16 @@
 	/* No transition — must track scroll 1:1 */
 }
 
+.project-overlay__swipe-hint {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	font-size: 0.875rem;
+	color: #999;
+	margin-bottom: 1.5rem;
+}
+
 .project-overlay__keywords {
 	list-style: none;
 	padding: 0;
@@ -351,6 +361,10 @@
 		left: 1rem;
 		right: 1rem;
 		padding: 1em;
+	}
+
+	.project-overlay__swipe-hint {
+		display: flex;
 	}
 	
 	.project-header {
